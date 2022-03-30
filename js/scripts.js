@@ -44,3 +44,26 @@ function encodeSentence(sentence) {
   }
 }
 
+function maskOffensiveWord(passage) {
+  passage = passage.toLowerCase();
+  let offensiveArray = ["biffaroni", "loopdaloop", "zoinks", "muppeteer"];
+  let retArray = [];
+  let textArray = passage.split(" ");
+  textArray.forEach(function (element) {
+    offensiveArray.forEach(function (oElement) {
+      if (element === oElement) {
+        element = encodeSentence(element);
+      }
+    })
+    retArray.push(element);
+  });
+  return retArray.join(' ');
+}
+
+function wordMatch(wordOne, wordTwo) {
+  wordOne = filterSentence(wordOne)
+  wordTwo = filterSentence(wordTwo)
+
+  return wordOne.toLowerCase().includes(wordOne.toLowerCase()) && wordOne.toLowerCase() === wordTwo.toLowerCase();
+}
+
