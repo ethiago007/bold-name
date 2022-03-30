@@ -67,3 +67,50 @@ function wordMatch(wordOne, wordTwo) {
   return wordOne.toLowerCase().includes(wordOne.toLowerCase()) && wordOne.toLowerCase() === wordTwo.toLowerCase();
 }
 
+function boldPassage(word, passage) {
+  if (errorCheck2(word, passage)) {
+    return "";
+  }
+  word = word.toLowerCase();
+  passage = passage.toLowerCase();
+  let offensiveArray = ["biffaroni", "loopdaloop", "zoinks", "muppeteer"];
+  let htmlString = "<p>";
+  let passageArray = passage.split(" ");
+  passageArray.forEach(function (element, index) {
+    if (wordMatch(element, word)) {
+      htmlString = htmlString.concat("<b>" + element + "</b>");
+    }
+    else if (element.includes(word) && element !== word) {
+      newElement = element.replace(word, "<b>" + word + "</b>");
+      htmlString = htmlString.concat(newElement);
+    }
+    else {
+      htmlString = htmlString.concat(element);
+    }
+    offensiveArray.forEach(function (off) {
+      if (index !== (passageArray.length - 1 && passageArray.length - 1 !== off)) {
+        htmlString = htmlString.concat(" ");
+      }
+    });
+  });
+  return htmlString + "</p>";
+}
+// $(document).ready(function () {
+//   $("#output1").submit(function (event) {
+//     event.preventDefault();
+//     let sentence = $("#sentence").val();
+//     let codedSentence = encodeSentence(sentence);
+//     $("#result1").text(codedSentence);
+//   });
+// });
+
+$(document).ready(function () {
+  $("#output2").submit(function (event) {
+    event.preventDefault();
+    let sentence1 = $("#text-passage").val();
+    let word = $("#input1").val();
+    let boldedPassage = boldPassage(word, sentence1);
+    let maskedBoldPassage = maskOffensiveWord(boldedPassage)
+    $("#bolded-passage").html(maskedBoldPassage);
+  });
+});
