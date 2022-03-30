@@ -16,7 +16,7 @@ The site encryptes or encodes or hide some very offensive words a user inputs. I
 *
 
 ## WEBPAGE LINK
-
+https://ethiago007.github.io/bold-name/
 ## CONTACT INFORMATION
 * +2349064252791 (calls and WhatsApp)
 * mohammedkamaldeen204@gmail.com
